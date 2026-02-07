@@ -4,7 +4,7 @@ import styles from './AuthForm.module.css';
 
 export default function LoginForm() {
   const { login } = useAuth();
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [submitting, setSubmitting] = useState(false);
@@ -14,7 +14,7 @@ export default function LoginForm() {
     setError('');
     setSubmitting(true);
     try {
-      await login(username, password);
+      await login(email, password);
     } catch (err) {
       setError(err.response?.data?.detail || 'Nie udalo sie zalogowac');
     } finally {
@@ -29,12 +29,12 @@ export default function LoginForm() {
       {error && <div className={styles.error}>{error}</div>}
 
       <label className={styles.label}>
-        Nazwa uzytkownika
+        Email
         <input
           className={styles.input}
-          type="text"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
           required
           autoFocus
         />

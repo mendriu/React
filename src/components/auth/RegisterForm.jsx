@@ -4,7 +4,7 @@ import styles from './AuthForm.module.css';
 
 export default function RegisterForm() {
   const { register } = useAuth();
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
@@ -21,7 +21,7 @@ export default function RegisterForm() {
 
     setSubmitting(true);
     try {
-      await register(username, password);
+      await register(email, password);
     } catch (err) {
       setError(err.response?.data?.detail || 'Nie udalo sie zarejestrowac');
     } finally {
@@ -36,12 +36,12 @@ export default function RegisterForm() {
       {error && <div className={styles.error}>{error}</div>}
 
       <label className={styles.label}>
-        Nazwa uzytkownika
+        Email
         <input
           className={styles.input}
-          type="text"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
           required
           autoFocus
         />

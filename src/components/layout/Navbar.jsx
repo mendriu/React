@@ -14,7 +14,7 @@ export default function Navbar() {
 
         {user && (
           <div className={styles.right}>
-            <span className={styles.user}>{user.username}</span>
+            <span className={styles.user}>{user.email}</span>
             <button className={styles.logoutBtn} onClick={logout}>
               Wyloguj
             </button>
